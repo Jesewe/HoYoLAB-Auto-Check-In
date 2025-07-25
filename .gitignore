@@ -1,0 +1,8 @@
+config.json
+.env
+*.bat
+*.spec
+/output/
+/dist/
+/build/
+/__pycache__/
