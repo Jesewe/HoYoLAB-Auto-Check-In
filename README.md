@@ -4,20 +4,14 @@ A Python script to automate daily check-ins for HoYoLAB games, including Zenless
 
 ## Features
 
-- Automates daily check-ins for multiple HoYoLAB accounts and games
-- Configurable via a JSON file (`config.json`)
-- Supports Discord webhook for status notifications
-- Clean console output with clear success and error messages
-- Error handling for invalid cookies, network issues, and configuration errors
-- Automatically creates a default `config.json` if none exists
-
-## Requirements
-
-- Python 3.8+
-- Required packages: `requests`
-  ```bash
-  pip install requests
-  ```
+- Automates daily check-ins for multiple HoYoLAB accounts and games.
+- Configurable via a JSON file (`config.json`).
+- Displays check-in status, including whether the check-in was performed today and total sign-in days.
+- Supports Discord webhook for status notifications.
+- Clean console output with game names in parentheses, e.g., `(HSR)`.
+- Error handling for invalid cookies, network issues, and configuration errors.
+- Automatically creates a default `config.json` if none exists.
+- Logs debug information for API issues.
 
 ## Installation
 
@@ -30,7 +24,7 @@ A Python script to automate daily check-ins for HoYoLAB games, including Zenless
    ```bash
    python main.py
    ```
-4. Edit `config.json` with your account details (see Configuration section).
+4. Edit `config.json` with your account details (see [Configuration](#configuration)).
 
 ## Configuration
 
@@ -83,23 +77,24 @@ Run the script using:
 python main.py
 ```
 
+### Command-Line Options
+
+- `--accounts`: Specify account indices (0-based) to process:
+  ```bash
+  python main.py --accounts 0 1
+  ```
+- `--games`: Specify games to check in:
+  ```bash
+  python main.py --games hsr gi
+  ```
+
 The script will:
 
 1. Load or create `config.json`.
 2. Process check-ins for each account and game.
-3. Send Discord notifications if configured.
-4. Display concise status messages (e.g., `[ZZZ] Check-in successful!` or `ERROR: [GI] Invalid cookie.`).
+3. Display check-in status and available rewards (if provided by the API).
+4. Send Discord notifications if configured.
 5. Exit with an error if any issues occur.
-
-## Output Example
-
-```
-INFO: Processing account 1
-INFO: [ZZZ] Check-in successful!
-INFO: [GI] Already checked in today
-ERROR: [HSR] Invalid cookie. Please update your cookie.
-INFO: Discord webhook sent successfully!
-```
 
 ## Contributing
 
